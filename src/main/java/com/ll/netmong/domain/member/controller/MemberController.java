@@ -1,7 +1,7 @@
-package com.ll.netmong.member.controller;
+package com.ll.netmong.domain.member.controller;
 
-import com.ll.netmong.member.entity.Member;
-import com.ll.netmong.member.service.MemberService;
+import com.ll.netmong.domain.member.entity.Member;
+import com.ll.netmong.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

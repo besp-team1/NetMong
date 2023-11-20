@@ -1,4 +1,4 @@
-package com.ll.netmong.member.entity;
+package com.ll.netmong.domain.member.entity;
 
 import com.ll.netmong.common.BaseEntity;
 import jakarta.persistence.Entity;
