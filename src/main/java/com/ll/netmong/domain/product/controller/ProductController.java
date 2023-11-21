@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     private final ProductService productService;
 
-    @PostMapping("/create")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public RsData createProduct(@RequestBody CreateRequest createRequest) {
         productService.createProduct(createRequest);
