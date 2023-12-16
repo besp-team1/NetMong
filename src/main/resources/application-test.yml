@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: test
   profiles:
-    active:
+    active: test
     include: secret
   datasource:
     jdbc-url: '${test.db.url}'
