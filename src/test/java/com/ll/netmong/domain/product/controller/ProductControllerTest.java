@@ -5,14 +5,10 @@ import com.ll.netmong.domain.product.dto.request.CreateRequest;
 import com.ll.netmong.domain.product.service.ProductServiceImpl;
 import com.ll.netmong.domain.product.util.Category;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import java.io.IOException;
 
 class ProductControllerTest {
     @Mock
@@ -28,14 +24,14 @@ class ProductControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
     }
 
-    @DisplayName("상품 등록 확인")
-    @Test
-    void post_Product() throws IOException {
-        CreateRequest createRequest = productRequest();
-        RsData productResponse = productResponse();
-
-
-    }
+//    @DisplayName("상품 등록 확인")
+//    @Test
+//    void post_Product() throws IOException {
+//        CreateRequest createRequest = productRequest();
+//        RsData productResponse = productResponse();
+//
+//
+//    }
 
     private CreateRequest productRequest() {
         CreateRequest createRequest = new CreateRequest();
