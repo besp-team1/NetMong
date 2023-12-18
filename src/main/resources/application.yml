@@ -3,12 +3,8 @@ server:
 spring:
   transaction:
     default-timeout: '${custom.transaction.default-timeout}'
-  spring:
-    config:
-      activate:
-        on-profile: local
   profiles:
-    active:
+    active: prod
     include: secret
   datasource:
     hikari:

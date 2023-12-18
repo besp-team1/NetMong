@@ -1,15 +1,12 @@
 spring:
-  config:
-    activate:
-      on-profile: test
-  profiles:
-    active: test
-    include: secret
   datasource:
-    jdbc-url: '${test.db.url}'
     driver-class-name: org.h2.Driver
-    username: '${test.db.username}'
-    password: '${test.db.password}'
+    url: jdbc:h2:mem:test;
+    username: sa
+    password:
   jpa:
     hibernate:
       ddl-auto: create
+custom:
+  site:
+    baseUrl: http://localhost:9000
