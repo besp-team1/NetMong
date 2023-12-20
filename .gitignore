@@ -38,6 +38,7 @@ out/
 
 ### Custom ###
 application-secret.yml
+application-secretprod.yml
 src/main/generated
 
 ### macOS ###
