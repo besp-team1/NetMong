@@ -28,8 +28,8 @@ spring:
     multipart:
       enabled: true
       location: '${custom.image.url}'
-      max-request-size: 500MB
-      max-file-size: 500MB
+      max-request-size: '${custom.image.request-size}'
+      max-file-size: '${custom.image.file-size}'
   security:
     oauth2:
       client:
@@ -44,6 +44,7 @@ spring:
 cloud:
   aws:
     s3:
+      resized-bucket: '${cloud.aws.s3.resized-bucket}'
       bucket: '${cloud.aws.s3.bucket}'
       url: '${cloud.aws.s3.url}'
     stack.auto: false
