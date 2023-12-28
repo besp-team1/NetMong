@@ -47,6 +47,8 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:5.2.0'
 
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    implementation 'net.coobird:thumbnailator:0.4.19'
 }
 
 tasks.named('bootBuildImage') {
