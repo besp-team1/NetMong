@@ -73,13 +73,27 @@ public class ItemCartServiceImpl implements ItemCartService {
         findItemCart.addCount(productCountRequest.getCount());
     }
 
+    @Override
+    public void deleteByProduct(Cart cart, Long productId) {
+        ItemCart itemCart = getItemCart(cart, productId);
+        int stackCount = itemCart.getStackCount();
+
+        Product product = productRepository.findById(itemCart.getProduct().getId())
+                .orElseThrow(() -> new ProductException("존재하지 않는 상품입니다.", ProductErrorCode.NOT_EXIST_PRODUCT));
+        product.setCount(product.getCount() + stackCount);
+
+        cart.minusCount(stackCount);
+        itemCartRepository.deleteById(itemCart.getId());
+        productRepository.save(product);
+    }
+
     @Transactional
     public void removeStock(Long productId, Integer count) {
         try {
             transactionTemplate.execute(status -> {
                 // Pessimistic Lock을 걸고 상품을 조회합니다.
                 Product findByProduct = productRepository.findByIdWithPessimisticLock(productId)
-                        .orElseThrow(() -> new ProductException("존재하지 않는 상품입니다.", ProductErrorCode.NOT_EXIST_PRODUCT_NAME));
+                        .orElseThrow(() -> new ProductException("존재하지 않는 상품입니다.", ProductErrorCode.NOT_EXIST_PRODUCT));
 
                 int restStock = findByProduct.getCount() - count;
 
