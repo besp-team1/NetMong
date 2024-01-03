@@ -58,4 +58,11 @@ logging:
     root: INFO
     org.hibernate.orm.jdbc.bind: trace
 
+payment:
+  toss:
+    test-client-api-key: '${payment.toss.test-client-api-key}'
+    test-secrete-api-key: '${payment.toss.test-secrete-api-key}'
+  success-url: '${payment.success-url}'
+  fail-url: '${payment.fail-url}'
+
 domain: '${custom.image.domain}'
