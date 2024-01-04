@@ -30,4 +30,11 @@ public class CartController {
         cartService.addProductByCart(currentUser, productId, productCountRequest);
         return RsData.of("S-1", CART_SUCCESS_PRODUCT, "create");
     }
+
+    @DeleteMapping("{productId}")
+    public RsData deleteByProduct(@AuthenticationPrincipal UserDetails currentUser,
+                            @PathVariable(name = "productId") Long productId) {
+        cartService.deleteByProduct(currentUser, productId);
+        return RsData.successOf("delete");
+    }
 }
