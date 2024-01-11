@@ -38,11 +38,8 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void createProductWithImage(UserDetails currentUser,
                                        CreateRequest createRequest, MultipartFile images) throws IOException {
-        if (!isImageExists(images)) {
-            initProduct(currentUser, createRequest);
-        }
+        Product product = initProduct(currentUser, createRequest);
         if (isImageExists(images)) {
-            Product product = initProduct(currentUser, createRequest);
             product.addProductImage(imageService.uploadImage(product, images).orElseThrow());
         }
     }
