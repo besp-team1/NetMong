@@ -64,7 +64,7 @@ public class ProductController {
 
     @GetMapping("/name/{name}")
     public RsData findByProductName(@PathVariable(name = "name") String name) {
-        return RsData.successOf(productService.findByProductName(name));
+        return RsData.successOf(productService.findProductsByProductName(name));
     }
 
     @GetMapping("/all")

@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ViewAllResponse> findByProductName(String productName) {
+    public List<ViewAllResponse> findProductsByProductName(String productName) {
         List<Product> products = productRepository.findByProductName(productName);
         if (products.isEmpty()) {
             throw new ProductException("존재 하지 않는 상품 이름 입니다.", ProductErrorCode.NOT_EXIST_PRODUCT_NAME);
