@@ -89,7 +89,8 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void softDeleteProduct(UserDetails currentUser,
                                   Long productId) {
-        validateCurrentUser(currentUser, validateExistProduct(productId));
+        Product findProduct = validateExistProduct(productId);
+        validateCurrentUser(currentUser, findProduct);
 
         productRepository.deleteById(productId);
     }
