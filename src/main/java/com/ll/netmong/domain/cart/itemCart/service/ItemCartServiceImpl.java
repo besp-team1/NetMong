@@ -31,7 +31,7 @@ public class ItemCartServiceImpl implements ItemCartService {
 
     @Override
     public List<ViewCartResponse> readMemberCartByUser(String findMemberEmail) {
-        List<ItemCart> findItemCart = itemCartRepository.findAll();
+        List<ItemCart> findItemCart = itemCartRepository.findByMemberEmail(findMemberEmail);
         List<ViewCartResponse> memberProducts = new ArrayList<>();
 
         for (ItemCart itemCart : findItemCart) {
