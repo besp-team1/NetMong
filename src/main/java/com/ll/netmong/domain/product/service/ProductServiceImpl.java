@@ -38,11 +38,8 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void createProductWithImage(UserDetails currentUser,
                                        CreateRequest createRequest, MultipartFile images) throws IOException {
-        if (!isImageExists(images)) {
-            initProduct(currentUser, createRequest);
-        }
+        Product product = initProduct(currentUser, createRequest);
         if (isImageExists(images)) {
-            Product product = initProduct(currentUser, createRequest);
             product.addProductImage(imageService.uploadImage(product, images).orElseThrow());
         }
     }
@@ -63,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ViewAllResponse> findByProductName(String productName) {
+    public List<ViewAllResponse> findProductsByProductName(String productName) {
         List<Product> products = productRepository.findByProductName(productName);
         if (products.isEmpty()) {
             throw new ProductException("존재 하지 않는 상품 이름 입니다.", ProductErrorCode.NOT_EXIST_PRODUCT_NAME);
@@ -92,7 +89,8 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void softDeleteProduct(UserDetails currentUser,
                                   Long productId) {
-        validateCurrentUser(currentUser, validateExistProduct(productId));
+        Product findProduct = validateExistProduct(productId);
+        validateCurrentUser(currentUser, findProduct);
 
         productRepository.deleteById(productId);
     }

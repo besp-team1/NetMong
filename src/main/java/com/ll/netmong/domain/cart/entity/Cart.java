@@ -10,9 +10,7 @@ import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
-@Table(name = "product_cart", indexes = {
-        @Index(name = "idx_member_id", columnList = "member_id")
-})
+@Table(name = "product_cart")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder(toBuilder = true)
 public class Cart extends BaseEntity {
@@ -33,5 +31,9 @@ public class Cart extends BaseEntity {
 
     public void addCount(Integer count) {
         this.totalCount += count;
+    }
+
+    public void minusCount(Integer count){
+        this.totalCount -= count;
     }
 }

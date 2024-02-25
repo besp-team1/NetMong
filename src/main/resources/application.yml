@@ -28,8 +28,8 @@ spring:
     multipart:
       enabled: true
       location: '${custom.image.url}'
-      max-request-size: 500MB
-      max-file-size: 500MB
+      max-request-size: '${custom.image.request-size}'
+      max-file-size: '${custom.image.file-size}'
   security:
     oauth2:
       client:
@@ -44,6 +44,7 @@ spring:
 cloud:
   aws:
     s3:
+      resized-bucket: '${cloud.aws.s3.resized-bucket}'
       bucket: '${cloud.aws.s3.bucket}'
       url: '${cloud.aws.s3.url}'
     stack.auto: false
@@ -56,5 +57,12 @@ logging:
   level:
     root: INFO
     org.hibernate.orm.jdbc.bind: trace
+
+payment:
+  toss:
+    test-client-api-key: '${payment.toss.test-client-api-key}'
+    test-secrete-api-key: '${payment.toss.test-secrete-api-key}'
+  success-url: '${payment.success-url}'
+  fail-url: '${payment.fail-url}'
 
 domain: '${custom.image.domain}'

@@ -44,6 +44,13 @@ public class CartServiceImpl implements CartService {
         itemCartService.addToCartForExistingProduct(findItemCart.get(), cart, productCountRequest);
     }
 
+    @Override
+    @Transactional
+    public void deleteByProduct(UserDetails currentUser, Long productId) {
+        Cart cart = validateExistMember(currentUser);
+        itemCartService.deleteByProduct(cart, productId);
+    }
+
     private Cart validateExistMember(UserDetails currentUser) {
         return cartRepository.findByMemberEmail(currentUser.getUsername())
                 .orElseThrow(() -> new ProductException("회원이 존재하지 않습니다.", ProductErrorCode.NOT_EXIST_PRODUCT));

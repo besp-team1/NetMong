@@ -22,7 +22,7 @@ public interface ProductService {
 
     List<ViewAllResponse> findByProductCategory(Category category);
 
-    List<ViewAllResponse> findByProductName(String productName);
+    List<ViewAllResponse> findProductsByProductName(String productName);
 
     Page<ViewAllResponse> readPageByProduct(Pageable pageable);
 
